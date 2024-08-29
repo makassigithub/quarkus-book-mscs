@@ -35,7 +35,7 @@ public class BookResource {
         book.title = title;
         book.author = author;
         book.genre = genre;
-        book.isbn13 = "We will get it from isbn microservice";
+        book.isbn13 = "13-We will get it from isbn microservice";
         book.creationDate = Instant.now();
 
         logger.info(book);
