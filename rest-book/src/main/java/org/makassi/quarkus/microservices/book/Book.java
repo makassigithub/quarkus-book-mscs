@@ -4,20 +4,19 @@ import java.time.Instant;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import jakarta.json.bind.annotation.JsonbDateFormat;
-import jakarta.json.bind.annotation.JsonbProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Schema(description = "This is a book entity")
 public class Book {
-    @JsonbProperty("isbn_13")
+    @JsonProperty("isbn_13")
     @Schema(required = true)
     public String isbn13;
     @Schema(required = true)
     public String title;
     public String author;
     public String genre;
-    @JsonbDateFormat("yyyy/MM/dd")
-    @JsonbProperty("creation_date")
+    @JsonProperty("creation_date")
     @Schema(implementation = String.class, format = "date")
     public Instant creationDate;
 

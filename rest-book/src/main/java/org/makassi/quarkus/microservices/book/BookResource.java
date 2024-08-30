@@ -31,15 +31,14 @@ public class BookResource {
             @FormParam("author") String author,
             @FormParam("genre") String genre,
             @FormParam("year") int creationDate) {
+        logger.info("--------------------------------------------------");
         Book book = new Book();
         book.title = title;
         book.author = author;
         book.genre = genre;
         book.isbn13 = "13-We will get it from isbn microservice";
         book.creationDate = Instant.now();
-
         logger.info(book);
-
         return Response.status(201).entity(book).build();
     }
 }

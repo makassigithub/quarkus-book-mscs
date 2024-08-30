@@ -4,20 +4,20 @@ import java.time.Instant;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import jakarta.json.bind.annotation.JsonbProperty;
-import jakarta.json.bind.annotation.JsonbTransient;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Schema(description = "Several isbns for books")
 public class IsbnNumbers {
-    @JsonbProperty("isbn_10")
+    @JsonProperty("isbn_10")
     @Schema(required = true)
     public String isbn10;
 
     @Schema(required = true)
-    @JsonbProperty("isbn_13")
+    @JsonProperty("isbn_13")
     public String isbn13;
 
-    @JsonbTransient
+    @JsonIgnore
     public Instant generationDate;
 
     @Override
