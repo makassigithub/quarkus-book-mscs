@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 
 import jakarta.inject.Inject;
@@ -22,6 +23,10 @@ public class BookResource {
     @Inject()
     Logger logger;
 
+    @Inject()
+    @RestClient
+    IsbnServiceProxy proxy;
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -36,7 +41,8 @@ public class BookResource {
         book.title = title;
         book.author = author;
         book.genre = genre;
-        book.isbn13 = "13-We will get it from isbn microservice";
+        // book.isbn13 = "13-We will get it from isbn microservice";
+        book.isbn13 = proxy.getIsbn13Number().isbn13;
         book.creationDate = Instant.now();
         logger.info(book);
         return Response.status(201).entity(book).build();
