@@ -12,5 +12,5 @@ import jakarta.ws.rs.core.MediaType;
 public interface IsbnServiceProxy {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    isbn13Number getIsbn13Number();
+    Isbn13Number getIsbn13Number();
 }
