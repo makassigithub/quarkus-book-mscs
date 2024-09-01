@@ -1,0 +1,12 @@
+version: "3"
+services:
+  isbn-api:
+    image: makassi/rest-isbn:1.0.0-SNAPSHOT
+    ports:
+      - "8701:8701"
+  book-api:
+    image: makassi/rest-book:1.0.0-SNAPSHOT
+    ports:
+      - "8702:8702"
+    environment:
+      - ISBNS_PROXY_MP-REST_URL=http://isbn-api:8701

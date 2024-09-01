@@ -12,7 +12,7 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+> **_NOTE:_** Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
 
 ## Packaging and running the application
 
@@ -65,3 +65,26 @@ If you want to learn more about building native executables, please consult <htt
 Easily start your RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+
+### Notes.
+
+    ## build binaries for local os:
+
+    ```shell script
+        mvn package -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true
+    ```
+    or
+
+````shell script
+     mvn package -Pnative
+ ```
+
+  -Dquarkus.native.enabled=true --> build native binary.
+
+  -Dquarkus.native.container-build=true -->
+  When you use -Dquarkus.native.container-build=true, Quarkus will use a container (like Docker) to perform the native compilation instead of relying on a locally installed GraalVM. This ensures that the native image is built in a consistent environment that is properly configured with all necessary dependencies.
+
+```shell script
+    mvn package -Pnative -Dquarkus.native.container-build=true
+```
+````
